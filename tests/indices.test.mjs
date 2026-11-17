@@ -54,7 +54,7 @@ test("KCCI 종합값을 기준일과 함께 뽑는다", () => {
   assert.equal(r.composite.asOf, "2026-11-16");
 });
 
-test("항로 6개를 한국어 이름으로 돌려준다", () => {
+test("항로 7개를 한국어 이름으로 돌려준다", () => {
   const r = parseKcci(readFixture("kobc-kcci.html"));
   assert.deepEqual(Object.keys(r.lanes), LANES);
   assert.equal(r.lanes["미주서안"].value, 8210);
@@ -63,6 +63,8 @@ test("항로 6개를 한국어 이름으로 돌려준다", () => {
   assert.equal(r.lanes["중국"].changePct, 0);
   assert.equal(r.lanes["일본"].value, 217);
   assert.equal(r.lanes["동남아"].value, 1686);
+  assert.equal(r.lanes["중동"].value, 8837);
+  assert.equal(r.lanes["중동"].changePct, -1.04);
 });
 
 test("KCCI 표에 없는 항로는 null로 남는다", () => {

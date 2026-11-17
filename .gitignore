@@ -2,3 +2,9 @@ node_modules/
 .env
 .env.local
 *.log
+
+.vercel
+.env*
+
+# 토큰에 workflow 권한이 없어 푸시 불가. 템플릿으로 로컬 보관만 한다.
+.github/workflows/

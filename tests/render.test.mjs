@@ -93,9 +93,9 @@ test("검색엔진 차단 메타가 들어간다", () => {
   assert.match(renderPage(sampleData), /<meta name="robots" content="noindex/);
 });
 
-test("항로 막대 6개가 모두 이름으로 나온다", () => {
+test("항로 막대 7개가 모두 이름으로 나온다", () => {
   const h = renderPage(sampleData);
-  for (const n of ["미주서안", "미주동안", "유럽", "동남아", "일본", "중국"]) assert.ok(h.includes(n));
+  for (const n of ["미주서안", "미주동안", "유럽", "동남아", "일본", "중국", "중동"]) assert.ok(h.includes(n));
 });
 
 test("항공 수치에 출처 링크가 함께 붙는다", () => {
