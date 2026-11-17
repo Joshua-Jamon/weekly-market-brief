@@ -17,8 +17,15 @@ import { renderPage } from "./lib/render.mjs";
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const NEWS_LIMIT = 5;
 
-/** ISO 주차 문자열 "2026-W47" */
+// 주차는 한국 시각 기준으로 센다. 예약 실행이 06:30 KST(= 전날 21:30 UTC)라
+// UTC로 세면 주차가 한 주 밀리고, 같은 날 수동 재실행 시 두 주차로 중복 저장된다.
+// (검토 지적 Important 3)
+const KST_OFFSET_MS = 9 * 3600 * 1000;
+const toKst = (date) => new Date(date.getTime() + KST_OFFSET_MS);
+
+/** ISO 주차 문자열 "2026-W47" (KST 기준) */
 export function isoWeek(date) {
+  date = toKst(date);
   const d = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
   const day = d.getUTCDay() || 7;          // 월=1 … 일=7
   d.setUTCDate(d.getUTCDate() + 4 - day);  // 그 주의 목요일
@@ -27,8 +34,9 @@ export function isoWeek(date) {
   return `${d.getUTCFullYear()}-W${String(no).padStart(2, "0")}`;
 }
 
-/** 사람이 읽는 주차 표기 "2026년 11월 3주" */
+/** 사람이 읽는 주차 표기 "2026년 11월 3주" (KST 기준) */
 export function weekLabel(date) {
+  date = toKst(date);
   const y = date.getUTCFullYear();
   const m = date.getUTCMonth() + 1;
   const nth = Math.ceil(date.getUTCDate() / 7);
@@ -182,7 +190,7 @@ function arg(name, fallback) {
 }
 
 async function main() {
-  const outDir = path.resolve(arg("out", path.join(HERE, "public")));
+  const outDir = path.resolve(arg("out", path.join(HERE, "docs")));
   const historyPath = path.join(HERE, "data", "history.json");
   const now = new Date();
 

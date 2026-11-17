@@ -30,3 +30,8 @@ node --test tests/      # 테스트
 - `public/index.html` — 최신 주차
 - `public/archive/<ISO주차>.html` — 주차별 보관본 (한 번 만들어지면 덮어쓰지 않음)
 - `data/history.json` — 지수 누적 이력 (그래프용)
+
+## 출처 약관 확인 (2026-11-17)
+- forwarder.kr `robots.txt` — `/adm/` 등만 차단, 사용 경로 `/freight/index`는 허용
+- KOBC `robots.txt` — `User-agent: * / Disallow:` (전체 허용)
+- 조회는 주 1회 1건. 수치는 출처 표기와 함께 게재한다.
