@@ -1,0 +1,29 @@
+{
+  "weeks": [
+    {
+      "week": "2026-W47",
+      "indices": {
+        "SCFI": {
+          "value": 3572.33,
+          "changePct": -1.68,
+          "asOf": "2026-11-13"
+        },
+        "CCFI": {
+          "value": 1919.27,
+          "changePct": -0.28,
+          "asOf": "2026-11-13"
+        },
+        "KCCI": {
+          "value": 4608,
+          "changePct": -1.29,
+          "asOf": "2026-11-16"
+        },
+        "BDI": {
+          "value": 2921,
+          "changePct": -1.98,
+          "asOf": "2026-11-16"
+        }
+      }
+    }
+  ]
+}

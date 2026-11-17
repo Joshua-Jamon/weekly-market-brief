@@ -1,0 +1,9 @@
+{
+  "name": "weekly-market-brief",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/",
+    "start": "node run.mjs"
+  }
+}
